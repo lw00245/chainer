@@ -12,13 +12,13 @@ import chainermn.links
 
 class ModelNormalBN(chainer.Chain):
     def __init__(self, n_in=3, n_units=3, n_out=2):
-        super(ModelNormalBN, self).__init__(
-            l1=chainer.links.Linear(n_in, n_units, nobias=True),
-            bn1=chainer.links.BatchNormalization(n_units),
-            l2=chainer.links.Linear(n_in, n_units, nobias=True),
-            bn2=chainer.links.BatchNormalization(n_units),
-            l3=chainer.links.Linear(n_in, n_out),
-        )
+        super(ModelNormalBN, self).__init__()
+        with self.init_scope():
+            self.l1 = chainer.links.Linear(n_in, n_units, nobias=True)
+            self.bn1 = chainer.links.BatchNormalization(n_units)
+            self.l2 = chainer.links.Linear(n_in, n_units, nobias=True)
+            self.bn2 = chainer.links.BatchNormalization(n_units)
+            self.l3 = chainer.links.Linear(n_in, n_out)
         self.train = True
 
     def __call__(self, x):

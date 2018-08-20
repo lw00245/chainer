@@ -9,8 +9,9 @@ import pytest
 
 class Cycle0SubA(chainer.Chain):
     def __init__(self, size):
-        super(Cycle0SubA, self).__init__(
-            f=L.Linear(size, size))
+        super(Cycle0SubA, self).__init__()
+        with self.init_scope():
+            self.f = L.Linear(size, size)
 
     def __call__(self, x):
         return self.f(x)
