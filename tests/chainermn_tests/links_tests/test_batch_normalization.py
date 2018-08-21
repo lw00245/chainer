@@ -31,13 +31,13 @@ class ModelDistributedBN(chainer.Chain):
     def __init__(self, comm, n_in=3, n_units=3, n_out=2):
         super(ModelDistributedBN, self).__init__()
         with self.init_scope():
-            self.l1 = chainer.links.Linear(n_in, n_units, nobias=True),
+            self.l1 = chainer.links.Linear(n_in, n_units, nobias=True)
             self.bn1 = chainermn.links.MultiNodeBatchNormalization(
-                n_units, comm),
-            self.l2 = chainer.links.Linear(n_in, n_units, nobias=True),
+                n_units, comm)
+            self.l2 = chainer.links.Linear(n_in, n_units, nobias=True)
             self.bn2 = chainermn.links.MultiNodeBatchNormalization(
-                n_units, comm),
-            self.l3 = chainer.links.Linear(n_in, n_out),
+                n_units, comm)
+            self.l3 = chainer.links.Linear(n_in, n_out)
         self.train = True
 
     def __call__(self, x):
