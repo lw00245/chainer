@@ -248,10 +248,12 @@ def check_cycle_model(gpu):
             err.backward()
 
 
+@pytest.mark.filterwarnings('ignore::DeprecationWarning')
 def test_cycle_model_cpu():
     check_cycle_model(False)
 
 
+@pytest.mark.filterwarnings('ignore::DeprecationWarning')
 @chainer.testing.attr.gpu
 def test_cycle_model_gpu():
     check_cycle_model(True)
@@ -281,10 +283,12 @@ def check_crossing_model(gpu):
         err.backward()
 
 
+@pytest.mark.filterwarnings('ignore::DeprecationWarning')
 def test_crossing_model_cpu():
     check_crossing_model(False)
 
 
+@pytest.mark.filterwarnings('ignore::DeprecationWarning')
 @chainer.testing.attr.gpu
 def test_crossing_model_gpu():
     check_crossing_model(True)
@@ -333,10 +337,12 @@ def check_branching_models(gpu):
                           BranchParent4)
 
 
+@pytest.mark.filterwarnings('ignore::DeprecationWarning')
 def test_branching_models_cpu():
     check_branching_models(False)
 
 
+@pytest.mark.filterwarnings('ignore::DeprecationWarning')
 @chainer.testing.attr.gpu
 def test_branching_models_gpu():
     check_branching_models(True)
@@ -369,10 +375,12 @@ def check_twisting_model(gpu):
         err.backward()
 
 
+@pytest.mark.filterwarnings('ignore::DeprecationWarning')
 def test_twisting_model_cpu():
     check_twisting_model(False)
 
 
+@pytest.mark.filterwarnings('ignore::DeprecationWarning')
 @chainer.testing.attr.gpu
 def test_twisting_model_gpu():
     check_twisting_model(True)
@@ -410,10 +418,12 @@ def check_tuple_data_model(gpu):
         err.backward()
 
 
+@pytest.mark.filterwarnings('ignore::DeprecationWarning')
 def test_tuple_data_model_cpu():
     check_tuple_data_model(False)
 
 
+@pytest.mark.filterwarnings('ignore::DeprecationWarning')
 @chainer.testing.attr.gpu
 def test_tuple_data_model_gpu():
     check_tuple_data_model(True)

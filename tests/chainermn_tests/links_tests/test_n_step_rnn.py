@@ -86,10 +86,12 @@ class TestNStepRNN(unittest.TestCase):
         # Check if backprop finishes without deadlock.
         self.assertTrue(True)
 
+    @pytest.mark.filterwarnings('ignore::DeprecationWarning')
     def test_homogeneous_rnn_cpu(self):
         self.check_homogeneous_rnn(False)
 
     @chainer.testing.attr.gpu
+    @pytest.mark.filterwarnings('ignore::DeprecationWarning')
     def test_homogeneous_rnn_gpu(self):
         self.check_homogeneous_rnn(True)
 
@@ -119,9 +121,11 @@ class TestNStepRNN(unittest.TestCase):
         # Check if backprop finishes without deadlock.
         self.assertTrue(True)
 
+    @pytest.mark.filterwarnings('ignore::DeprecationWarning')
     def test_heterogeneous_rnn_cpu(self):
         self.check_heterogeneous_rnn(False)
 
+    @pytest.mark.filterwarnings('ignore::DeprecationWarning')
     @chainer.testing.attr.gpu
     def test_heterogeneous_rnn_gpu(self):
         self.check_heterogeneous_rnn(True)
