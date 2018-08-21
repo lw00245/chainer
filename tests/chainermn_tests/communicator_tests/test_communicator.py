@@ -34,9 +34,9 @@ class ExampleModel(chainer.Chain):
             self.dtype = dtype
         super(ExampleModel, self).__init__()
         with self.init_scope():
-            a=chainer.links.Linear(2, 3)
-            b=chainer.links.Linear(3, 4)
-            c=chainer.links.Linear(4, 5)
+            a = chainer.links.Linear(2, 3)
+            b = chainer.links.Linear(3, 4)
+            c = chainer.links.Linear(4, 5)
 
 
 class Param(object):

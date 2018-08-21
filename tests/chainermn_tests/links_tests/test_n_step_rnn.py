@@ -26,7 +26,6 @@ class Model(chainer.Chain):
             self.l2 = L.Linear(n_rnn_hid, n_hid)
             self.l3 = L.Linear(n_hid, 1)
 
-
     def __call__(self, xs, ts):
         h1 = [self.l1(x) for x in xs]
         # MultiNodeNStepRNN returns outputs of actual_rnn + delegate_variable.
