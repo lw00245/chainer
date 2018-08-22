@@ -19,7 +19,6 @@ matrix:
       - PYTHON_VERSION=2.7.10
       - PYENV_ROOT=~/.pyenv
       - PATH=$PYENV_ROOT/shims:$PATH:$PYENV_ROOT/bin
-      - OMP_NUM_THREADS=1
       if: (branch = master OR branch = v4) AND (NOT type in (pull_request))
     - os: osx
       language: generic
@@ -27,7 +26,6 @@ matrix:
       - PYTHON_VERSION=3.4.4
       - PYENV_ROOT=~/.pyenv
       - PATH=$PYENV_ROOT/shims:$PATH:$PYENV_ROOT/bin
-      - OMP_NUM_THREADS=1
       if: (branch = master OR branch = v4) AND (NOT type in (pull_request))
     - os: osx
       language: generic
@@ -35,7 +33,6 @@ matrix:
       - PYTHON_VERSION=3.5.1
       - PYENV_ROOT=~/.pyenv
       - PATH=$PYENV_ROOT/shims:$PATH:$PYENV_ROOT/bin
-      - OMP_NUM_THREADS=1
       if: (branch = master OR branch = v4) AND (NOT type in (pull_request))
 
 before_install:
@@ -66,6 +63,7 @@ script:
   - test ! -s check_autopep8
   - pushd tests
   - # pytest -m "not slow and not gpu and not cudnn and not ideep" chainer_tests
+  - export OMP_NUM_THREADS=1
   - (for NP in 1 2; do mpiexec -n ${NP} pytest -s -v -m 'not gpu and not slow' chainermn_tests || exit $?; done)
   - popd
   - if [[ $TRAVIS_OS_NAME == "linux" ]]; then
